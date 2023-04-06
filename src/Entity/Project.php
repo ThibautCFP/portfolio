@@ -41,9 +41,13 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, orphanRemoval: true)]
     private Collection $images;
 
+    #[ORM\ManyToMany(targetEntity: Skill::class, mappedBy: 'projects')]
+    private Collection $skills;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,6 +116,33 @@ class Project
             if ($image->getProject() === $this) {
                 $image->setProject(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Skill>
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills->add($skill);
+            $skill->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->removeElement($skill)) {
+            $skill->removeProject($this);
         }
 
         return $this;
