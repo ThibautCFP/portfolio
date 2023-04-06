@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Admin Projets
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<h1 class="text-center">Administration des projets</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Contenu</th>
+					{# <th>Actif</th> #}
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for projet in projects %}
+					<tr>
+						<td>
+							{{ project.id }}
+						</td>
+						<td>
+							{{ project.title }}
+						</td>
+						<td>
+							{{ project.content|slice(0,50) ~ "..." }}
+						</td>
+						<td>
+							<div class="d-flex gap-5">
+								<a class="btn btn-warning" href="">
+									<i class="bi bi-pencil-square"></i>
+									Modifier</a>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
+
+{% endblock %}
