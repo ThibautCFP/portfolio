@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,6 +28,10 @@ class Project
         maxMessage: 'Le titre doit contenir au maximum {{ limit }} caractères',
     )]
     private ?string $title = null;
+
+    #[ORM\Column(length: 100)]
+    #[Gedmo\Slug(fields: ['title'])]
+    private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length(
@@ -144,6 +149,30 @@ class Project
         if ($this->skills->removeElement($skill)) {
             $skill->removeProject($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of slug
+     *
+     * @return ?string
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @param ?string $slug
+     *
+     * @return self
+     */
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProjectImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ProjectImageRepository::class)]
 class ProjectImage
@@ -24,6 +25,7 @@ class ProjectImage
     private ?string $imageSize = null;
 
     #[ORM\Column]
+    #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
