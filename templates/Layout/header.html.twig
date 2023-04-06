@@ -1,0 +1,16 @@
+<header class="sticky-top">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a href="{{ path('app.front.home') }}" class="navbar-brand">Portfolio</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav me-auto">
+				<li class="navbar-item">
+					<a class="nav-link" {{ app.request.get('_route') == 'app.front.home' ? 'active' }} aria-current="page" href="{{ path('app.front.home') }}">Accueil</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+</header>
