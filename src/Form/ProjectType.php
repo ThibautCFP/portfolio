@@ -34,7 +34,7 @@ class ProjectType extends AbstractType
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'Actif',
-                'required' => true,
+                'required' => false,
             ])
             ->add('skills', EntityType::class, [
                 'class' => Skill::class,
