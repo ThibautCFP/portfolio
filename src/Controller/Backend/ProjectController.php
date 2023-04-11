@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Backend\Projects;
+namespace App\Controller\Backend;
 
 use App\Entity\Project;
 use App\Form\ProjectType;

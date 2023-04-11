@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Modification d'une compétence
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<div class="card p-3 w-75 mx-auto">
+			<h1 class="text-center">Modification compétence</h1>
+			{% include "Backend/Skills/_form.html.twig" with { button_label: 'Modifier'} %}
+		</div>
+		<a href="{{ path('app.admin.skills.index') }}" class="btn btn-primary">Retour à la liste</a>
+	</section>
+
+{% endblock %}

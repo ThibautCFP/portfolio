@@ -11,6 +11,8 @@
 			<h1 class="text-center">Modification projet</h1>
 			{% include "Backend/Projects/_form.html.twig" with { button_label: 'Modifier'} %}
 		</div>
+		<a href="{{ path('app.admin.projects.index') }}" class="btn btn-primary">Retour à la liste</a>
+
 	</section>
 
 {% endblock %}
