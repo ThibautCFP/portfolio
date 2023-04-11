@@ -22,7 +22,7 @@ class Project
         message: 'Le titre du projet ne peut pas être vide'
     )]
     #[Assert\Length(
-        min: 10,
+        min: 5,
         max: 100,
         minMessage: 'Le titre doit contenir au minimum {{ limit }} caractères',
         maxMessage: 'Le titre doit contenir au maximum {{ limit }} caractères',
