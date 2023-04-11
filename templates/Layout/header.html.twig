@@ -17,19 +17,20 @@
 		<div class="collapse navbar-collapse">
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
-					<div
-						class="me-2">{# <div class="btn-group">
-														<button type="button" class="btn btn-secondary">Split dropdown</button>
-														<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-															<span class="visually-hidden">Toggle Dropdown</span>
-														</button>
-														<div class="dropdown-menu">
-															<a class="dropdown-item" href="#">Action</a>
-															<a class="dropdown-item disabled" href="#">Disabled action</a>
-															<div class="dropdown-divider"></div>
-															<a class="dropdown-item" href="#">Separated link</a>
-														</div>
-													</div> #}
+					<div class="me-2">
+						<div class="btn-group" style="width: 120px;">
+							<button type="button" class="btn btn-warning">Admin
+								<i class="bi bi-tools"></i>
+							</button>
+							<button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{{ path('app.admin.projects.index') }}">Projets</a>
+								<a class="dropdown-item" href="{{ path('app.admin.skills.index') }}">Compétences</a>
+								<a class="dropdown-item" href="#">Contacts</a>
+							</div>
+						</div>
 					</div>
 				{% endif %}
 			{% endif %}
