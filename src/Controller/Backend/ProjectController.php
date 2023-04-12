@@ -11,14 +11,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/admin/projects')]
+#[Route('/admin')]
 class ProjectController extends AbstractController
 {
     public function __construct(
         private readonly ProjectRepository $projectRepository
     ) {
     }
-    #[Route('', name: 'app.admin.projects.index', methods: ['GET'])]
+
+    #[Route('', name: 'app.admin.projects.redirect', methods: ['GET'])]
+    public function admin(): RedirectResponse
+    {
+        return $this->redirectToRoute('app.admin.projects.index');
+    }
+
+
+    #[Route('/projects', name: 'app.admin.projects.index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('Backend/Projects/index.html.twig', [
@@ -26,7 +34,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name: 'app.admin.projects.create', methods: ['POST', 'GET'])]
+    #[Route('/projects/create', name: 'app.admin.projects.create', methods: ['POST', 'GET'])]
     public function create(Request $request): Response|RedirectResponse
     {
         $project = new Project;
@@ -47,7 +55,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    #[Route('/update/{id}', name: 'app.admin.projects.update', methods: ['POST', 'GET'])]
+    #[Route('/projects/update/{id}', name: 'app.admin.projects.update', methods: ['POST', 'GET'])]
     public function update(Project $project, Request $request): RedirectResponse|Response
     {
         $form = $this->createForm(ProjectType::class, $project);
@@ -67,7 +75,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'app.admin.projects.delete', methods: ['DELETE', 'POST'])]
+    #[Route('/projects/delete/{id}', name: 'app.admin.projects.delete', methods: ['DELETE', 'POST'])]
     public function delete(Project $project, Request $request): RedirectResponse
     {
         if (!$project instanceof Project) {
