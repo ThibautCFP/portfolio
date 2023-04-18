@@ -39,28 +39,46 @@ class MessagesRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Messages[] Returns an array of Messages objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findMessagesByIdWithUser(int $id): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m', 'u')
+            ->join('m.author', 'u')
+            ->where('m.request = :id')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
 
-//    public function findOneBySomeField($value): ?Messages
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        // $conn = $this->getEntityManager()->getConnection();
+        // $query = 'SELECT * FROM messages m JOIN user u ON m.author_id = u.id WHERE m.id = :id ORDER BY created_at DESC;';
+        // $smt = $conn->prepare($query);
+
+        // return $smt->executeQuery(['id' => $id])->fetchAllAssociative();
+    }
+
+    //    /**
+    //     * @return Messages[] Returns an array of Messages objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('m')
+    //            ->andWhere('m.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('m.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Messages
+    //    {
+    //        return $this->createQueryBuilder('m')
+    //            ->andWhere('m.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

@@ -17,7 +17,7 @@ class Request
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'request', targetEntity: Messages::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'request', targetEntity: Messages::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $messages;
 
     #[ORM\ManyToOne(inversedBy: 'requests')]
@@ -35,6 +35,10 @@ class Request
         maxMessage: 'Le titre doit contenir au maximum {{ limit }} caractères',
     )]
     private ?string $title = null;
+
+    #[ORM\Column]
+    #[Gedmo\Timestampable(on: 'create')]
+    private ?\DateTimeImmutable $createdAt = null;
 
     public function __construct()
     {
@@ -96,6 +100,18 @@ class Request
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

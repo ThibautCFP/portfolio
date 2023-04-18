@@ -37,7 +37,7 @@ class ProjectController extends AbstractController
     #[Route('/projects/create', name: 'app.admin.projects.create', methods: ['POST', 'GET'])]
     public function create(Request $request): Response|RedirectResponse
     {
-        $project = new Project;
+        $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
 
         $form->handleRequest($request);

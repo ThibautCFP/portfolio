@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Demande
+	{{ request.title }}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<h1 class="text-center">{{ request.title }}</h1>
+		{% for message in messages %}
+			<div class="d-flex {{message.support ? 'justify-content-end' : 'justify-content-start'}} mt-4">
+				<div class="card w-50">
+					<div class="card-header">
+						<div class="card-text">Message</div>
+					</div>
+					<div class="card-body">
+						<div class="card-text">
+							{{ message.content }}
+						</div>
+					</div>
+					<div class="card-footer d-flex justify-content-around">
+						<div class="card-text text-muted">
+							{{ message.author.firstName ~ ' ' ~ message.author.lastName }}
+						</div>
+						<div class="card-text text-muted">{{ message.createdAt|format_datetime(locale='fr') }}</div>
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+		<button class="btn btn-primary js-btn-message mt-4 mb-4">Ajouter un nouveau message</button>
+		<div class="js-form" style="display: none;">
+			<div class="card w-50 mx-auto mt-4 bg-warning">
+				<div class="card-header">
+					Nouveau message
+				</div>
+				{{ form_start(form) }}
+
+				{{ form_widget(form.content) }}
+				<div class="card-footer d-flex justify-content-end">
+					<button type="submit" class="btn btn-primary ">Envoyer</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

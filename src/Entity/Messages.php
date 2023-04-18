@@ -39,6 +39,9 @@ class Messages
     #[ORM\JoinColumn(nullable: false)]
     private ?Request $request = null;
 
+    #[ORM\Column]
+    private ?bool $support = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +91,18 @@ class Messages
     public function setRequest(?Request $request): self
     {
         $this->request = $request;
+
+        return $this;
+    }
+
+    public function isSupport(): ?bool
+    {
+        return $this->support;
+    }
+
+    public function setSupport(bool $support): self
+    {
+        $this->support = $support;
 
         return $this;
     }

@@ -15,6 +15,9 @@ import './bootstrap';
 
 import './styles/Backend/admin.scss';
 
+import './JS/Frontend/addMessageCollection';
+
+import './JS/Frontend/displayForm';
 require('bootstrap');
 
 $(document).ready(function () {
