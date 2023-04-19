@@ -8,7 +8,7 @@
 
 {% block body %}
 	<section class="container mt-4">
-		<h1 class="text-center">Demandes</h1>
+		<h1 class="text-center">Administration des Demandes</h1>
 		{% if requests %}
 			<div class="card">
 				<table class="table">
@@ -41,7 +41,7 @@
 									{{ request.createdAt|format_datetime(locale='fr') }}
 								</td>
 								<td>
-									<a href="{{ path('app.requests.show', { id: request.id }) }}" class="btn btn-info">Voir plus</a>
+									<a href="{{ path('app.admin.requests.show', { id: request.id }) }}" class="btn btn-info">Voir plus</a>
 								</td>
 							</tr>
 						{% endfor %}
