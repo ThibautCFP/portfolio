@@ -19,6 +19,10 @@
 	</head>
 	<body>
 		{% include "Layout/header.html.twig" %}
-		{% block body %}{% endblock %}
+		<main>
+			{% include "Layout/flash.html.twig" %}
+			{% block body %}{% endblock %}
+		</main>
+
 	</body>
 </html>

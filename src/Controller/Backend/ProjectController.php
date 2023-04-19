@@ -45,7 +45,7 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->projectRepository->save($project, true);
 
-            $this->addFlash('succes', 'Votre project a été ajouté avec succès');
+            $this->addFlash('success', 'Votre project a été ajouté avec succès');
 
             return $this->redirectToRoute('app.admin.projects.index');
         }
