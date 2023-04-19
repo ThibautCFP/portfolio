@@ -28,7 +28,7 @@
 							{{ project.title }}
 						</td>
 						<td>
-							{{ project.content|slice(0,50) ~ "..." }}
+							{{ project.content|striptags|slice(0,50) ~ "..." }}
 						</td>
 						<td>
 							<div class="d-flex gap-2">

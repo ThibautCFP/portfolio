@@ -1,3 +1,8 @@
+const path = require('path');
+const { CKEditorTranslationsPlugin } = require('@ckeditor/ckeditor5-dev-translations');
+const { styles } = require('@ckeditor/ckeditor5-dev-utils');
+const CKEditorWebpackPlugin = require('@ckeditor/ckeditor5-dev-webpack-plugin');
+
 const Encore = require('@symfony/webpack-encore');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -9,6 +14,18 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
+    .copyFiles({
+        from: './assets/images',
+
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+    })
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or subdirectory deploy
@@ -74,6 +91,34 @@ Encore
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery'
+    })
+    .addPlugin(new CKEditorWebpackPlugin({
+        language: 'fr',
+        addMainLanguageTranslationsToAllAssets: true,
+    }))
+
+    .addRule({
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+        loader: 'raw-loader'
+    })
+
+    // Configure other image loaders to exclude CKEditor 5 SVG files.
+    .configureLoaderRule('images', loader => {
+        loader.exclude = /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/;
+    })
+
+    // Configure PostCSS loader.
+    .addLoader({
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
+        loader: 'postcss-loader',
+        options: {
+            postcssOptions: styles.getPostCssConfig({
+                themeImporter: {
+                    themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
+                },
+                minify: true
+            })
+        }
     })
     ;
 

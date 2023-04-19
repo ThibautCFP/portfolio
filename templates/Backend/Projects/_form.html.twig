@@ -1,4 +1,4 @@
-{{ form_start(form) }}
+{{ form_start(form, {attr: {class: 'form-project'}})}}
 
 <div class="row aligne-items-center">
 	<div class="col-md-6">{{ form_row(form.title) }}</div>
@@ -6,7 +6,14 @@
 </div>
 
 {{ form_row(form.skills) }}
-{{ form_row(form.content) }}
+<div class="mb-3">
+	<label for="{{ form.content.vars.full_name }}">{{ form.content.vars.label }}</label>
+	<div id="ckeditor" data-placeholder="{{ form.content.vars.attr.placeholder }}">
+
+		{{ form.content.vars.value|raw }}
+	</div>
+	{{ form_row(form.content, {attr: {class: 'js-ckedit-input-hidden'}})}}
+</div>
 <div class="row mb-3">
 	<fieldset class="col-md-12">
 		{{ form_label(form.images) }}

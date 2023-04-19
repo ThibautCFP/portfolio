@@ -1,16 +1,16 @@
 <header class="sticky-top">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container-fluid">
-			<a href="{{ path('app.front.home') }}" class="navbar-brand">Portfolio</a>
+			<a href="{{ path('app.front.home') }}" class="navbar-brand">Thibaut Brunet</a>
 			<ul class="navbar-nav me-auto">
 				<li class="navbar-item">
-					<a class="nav-link {{ app.request.get('_route') == 'app.front.home' ? 'active' }}" href="">Projets</a>
+					<a class="nav-link {{ app.request.get('_route') == 'app.projects' ? 'active' }}" href="">Projets</a>
 				</li>
 				<li class="navbar-item">
 					<a href="{{ path('app.requests') }}" class="nav-link {{ app.request.get('_route') == 'app.requests' ? 'active' }}">Demandes</a>
 				</li>
 				<li class="navbar-item">
-					<a href="" class="nav-link {{ app.request.get('_route') == 'app.front.profil' ? 'active' }}">Profil</a>
+					<a href="" class="nav-link {{ app.request.get('_route') == 'app.profil' ? 'active' }}">Profil</a>
 				</li>
 			</ul>
 		</div>

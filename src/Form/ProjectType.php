@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ProjectType extends AbstractType
 {
@@ -26,7 +27,7 @@ class ProjectType extends AbstractType
                     'placeholder' => 'Symfony web site'
                 ],
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', HiddenType::class, [
                 'label' => 'Description',
                 'required' => true,
                 'attr' => [

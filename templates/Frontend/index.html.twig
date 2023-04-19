@@ -5,4 +5,31 @@
 	{{ parent() }}
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+	<img class="banner-hero" src="{{ asset('build/images/banner-symfony.jpg') }}" alt="">
+
+	<section class="container mt-4">
+		<h1>Présentation du BTS SIO</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam libero dicta consequatur eius laudantium ab natus eum facilis dolorum officiis, nobis provident nam neque similique iste sint necessitatibus maxime.</p>
+		<div class="d-flex justify-content-between mt-4">
+			<div class="slam col-md-5">
+				<h4>Option SLAM</h4>
+				<p>
+					<strong>SLAM</strong>
+					signifie "solutions logicielles et applications métiers". Voici quelques informations concernant l'option SLAM du BTS SIO.
+				</p>
+				<p>l'élève participera à la conception, au développement, ainsi qu'au déploiement et à la maintenance des composants logiciels d'une solution applicative. Il acquiert ainsi des compétences en conception et développement d'une solution applicative, en maintenance de celle-ci, mais aussi en bases de données et en gestion des données numériques.</p>
+				<p class="text-muted mt-4 fst-italic">Source : Onicep</p>
+			</div>
+
+			<div class="sisr col-md-5">
+				<h4>Option SISR</h4>
+				<p>
+					<strong>SISR</strong>
+					signifie "Solutions d’infrastructure, systèmes et réseaux". Voici quelques informations concercant l'option SISR du BTS SIO.</p>
+				<p>Le titulaire participera à l'administration des systèmes et du réseau, il sera capable de modifier ou d'adapter les solutions d'infrastructure ainsi que la qualité de service des équipements du réseaux. Il acquiert ainsi les compétences pour concevoir une solution d'infrastructure réseau, l'installer, la tester et la déployer. L'élève apprend aussi à administrer et superviser ce réseau.</p>
+				<p class="text-muted mt-4 fst-italic">Source : Onicep</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

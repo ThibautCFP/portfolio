@@ -26,3 +26,5 @@ require('bootstrap');
 $(document).ready(function () {
     $('[data-toggle="popover"]').popover();
 });
+
+import './JS/Backend/CKEditor5';
