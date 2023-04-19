@@ -9,6 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
@@ -43,7 +44,7 @@ class Project
     #[ORM\Column]
     private ?bool $enabled = null;
 
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\ManyToMany(targetEntity: Skill::class, mappedBy: 'projects')]

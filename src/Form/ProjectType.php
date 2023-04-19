@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ProjectType extends AbstractType
 {
@@ -50,6 +51,15 @@ class ProjectType extends AbstractType
                 'expanded' => false,
                 'autocomplete' => true,
                 'required' => false,
+            ])
+            ->add('images', CollectionType::class, [
+                'entry_type' => ProjectImageType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'delete_empty' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'label' => false,
             ]);
     }
 
