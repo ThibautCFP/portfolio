@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Projets
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+	<section class="container mt-4">
+		<h1 class="text-center">Les projets</h1>
+		<div class="project mt-4">
+			{% for project in projects %}
+				<div class="card">
+					<div class="info">
+						<p class="title">{{ project.title }}</p>
+						<p>{{ project.content|striptags|slice(0,100) ~ "..." }}</p>
+					</div>
+					<div class="footer">
+						<p class="tag">
+							{% for skill in project.skills %}
+								<span class="badge bg-primary">{{ skill.title }}</span>
+							{% endfor %}
+						</p>
+						<a class="action" href="{{ path('app.projects.show', {id: project.id}) }}">Voir plus
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Modification d'un projet
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<div class="card p-3 w-75 mx-auto">
+			<h1 class="text-center">Modification projet</h1>
+			{% include "Backend/Projects/_form.html.twig" with { button_label: 'Modifier'} %}
+		</div>
+		<a href="{{ path('app.admin.projects.index') }}" class="btn btn-primary">
+			<i class="bi bi-arrow-return-left"></i>
+			Retour à la liste</a>
+
+	</section>
+
+{% endblock %}

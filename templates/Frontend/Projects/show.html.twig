@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Projet
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="swiper banner-hero">
+			<div class="swiper-wrapper">
+				{% for image in images %}
+					<div class="swiper-slide">
+						<img class="banner-hero" src="{{ vich_uploader_asset(image) }}" alt="">
+					</div>
+				{% endfor %}
+			</div>
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+
+	</section>
+{% endblock %}

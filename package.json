@@ -1,0 +1,62 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.17.0",
+        "@babel/preset-env": "^7.16.0",
+        "@ckeditor/ckeditor5-autoformat": "^37.1.0",
+        "@ckeditor/ckeditor5-basic-styles": "^37.1.0",
+        "@ckeditor/ckeditor5-block-quote": "^37.1.0",
+        "@ckeditor/ckeditor5-dev-translations": "^37.0.1",
+        "@ckeditor/ckeditor5-dev-utils": "^37.0.1",
+        "@ckeditor/ckeditor5-dev-webpack-plugin": "^31.1.13",
+        "@ckeditor/ckeditor5-editor-classic": "^37.1.0",
+        "@ckeditor/ckeditor5-essentials": "^37.1.0",
+        "@ckeditor/ckeditor5-heading": "^37.1.0",
+        "@ckeditor/ckeditor5-link": "^37.1.0",
+        "@ckeditor/ckeditor5-list": "^37.1.0",
+        "@ckeditor/ckeditor5-paragraph": "^37.1.0",
+        "@ckeditor/ckeditor5-theme-lark": "^37.1.0",
+        "@commitlint/cli": "^17.5.1",
+        "@commitlint/config-conventional": "^17.4.4",
+        "@commitlint/cz-commitlint": "^17.5.0",
+        "@hotwired/stimulus": "^3.0.0",
+        "@symfony/stimulus-bridge": "^3.2.0",
+        "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
+        "@symfony/webpack-encore": "^4.0.0",
+        "commitizen": "^4.3.0",
+        "core-js": "^3.23.0",
+        "css-loader": "5",
+        "husky": "^8.0.3",
+        "postcss-loader": "4",
+        "raw-loader": "4",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.60.0",
+        "sass-loader": "^13.0.0",
+        "style-loader": "2",
+        "swiper": "^9.2.3",
+        "tom-select": "^2.2.2",
+        "webpack": "5",
+        "webpack-cli": "4",
+        "webpack-notifier": "^1.15.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
+    },
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress",
+        "postinstall": "husky install"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.7",
+        "bootstrap": "^5.2.3",
+        "bootstrap-icons": "^1.10.4",
+        "file-loader": "^6.0.0",
+        "jquery": "^3.6.4"
+    }
+}

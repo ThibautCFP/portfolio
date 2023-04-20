@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Admin Compétences
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<h1 class="text-center">Administration des compétences</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for skill in skills %}
+					<tr>
+						<td>{{skill.id}}</td>
+						<td>{{skill.title}}</td>
+						<td>
+							<div class="d-flex gap-2">
+								<a class="btn btn-warning" href="{{ path('app.admin.skills.update', { id: skill.id } )}}">
+									<i class="bi bi-pencil-square"></i>
+									Modifier</a>
+								{% include "Backend/Skills/_deleteForm.html.twig" %}
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{ path('app.admin.skills.create') }}" class="btn btn-primary">Créer une compétence</a>
+
+	</section>
+{% endblock %}

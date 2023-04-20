@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Liste des demandes
+	{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+	<section class="container mt-4">
+		<h1 class="text-center">Administration des Demandes</h1>
+		{% if requests %}
+			<div class="card">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								Id
+							</th>
+							<th>
+								TItre
+							</th>
+							<th>
+								Créé le
+							</th>
+							<th>
+								Actions
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for request in requests %}
+							<tr>
+								<td>
+									{{ request.id }}
+								</td>
+								<td>
+									{{ request.title }}
+								</td>
+								<td>
+									{{ request.createdAt|format_datetime(locale='fr') }}
+								</td>
+								<td>
+									<a href="{{ path('app.admin.requests.show', { id: request.id }) }}" class="btn btn-info">Voir plus</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<div class="card bg-warning">
+					<div class="card-body">
+						<p class="card-text">Pas de demande de créé.</p>
+						<a href="{{ path('app.requests.create') }}" class="btn btn-info">Créer une demande</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+	</div>
+
+
+</section>{% endblock %}

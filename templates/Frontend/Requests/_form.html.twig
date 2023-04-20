@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+
+<div class="row align-items-center">
+	<div class="col-md-6">{{ form_row(form.title) }}</div>
+	{{ form_row(form.messages) }}
+	{# <div class="col-md-6">{{ form_row(form.messages) }}</div> #}
+	<div class="text-center">
+		<button type="submit" class="btn btn-primary">Envoyer</button>
+
+	</div>
+</div>
+
+{{ form_end(form) }}
