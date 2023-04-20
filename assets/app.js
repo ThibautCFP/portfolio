@@ -28,3 +28,5 @@ $(document).ready(function () {
 });
 
 import './JS/Backend/CKEditor5';
+
+import './JS/Frontend/swiper';

@@ -22,7 +22,6 @@ class ProjectImageType extends AbstractType
                     'image_uri' => true,
                     'asset_helper' => true,
                     'label' => 'Image',
-                    'allow_delete' => false,
                     'delete_label' => "Supprimer l'image"
                 ]
             );;

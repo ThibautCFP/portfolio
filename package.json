@@ -32,6 +32,7 @@
         "sass": "^1.60.0",
         "sass-loader": "^13.0.0",
         "style-loader": "2",
+        "swiper": "^9.2.3",
         "tom-select": "^2.2.2",
         "webpack": "5",
         "webpack-cli": "4",

@@ -4,7 +4,7 @@
 			<a href="{{ path('app.front.home') }}" class="navbar-brand">Thibaut Brunet</a>
 			<ul class="navbar-nav me-auto">
 				<li class="navbar-item">
-					<a class="nav-link {{ app.request.get('_route') == 'app.projects' ? 'active' }}" href="">Projets</a>
+					<a class="nav-link {{ app.request.get('_route') == 'app.projects' ? 'active' }}" href="{{ path('app.projects') }}">Projets</a>
 				</li>
 				<li class="navbar-item">
 					<a href="{{ path('app.requests') }}" class="nav-link {{ app.request.get('_route') == 'app.requests' ? 'active' }}">Demandes</a>
@@ -18,7 +18,7 @@
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
 					<div class="me-2">
-						<div class="btn-group" style="width: 120px;">
+						<div class="btn-group me-4 sf-s" style="width: 120px;">
 							<button type="button" class="btn btn-warning">Admin
 								<i class="bi bi-tools"></i>
 							</button>
@@ -26,12 +26,20 @@
 								<span class="visually-hidden">Toggle Dropdown</span>
 							</button>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="{{ path('app.admin.projects.index') }}">Projets</a>
-								<a class="dropdown-item" href="{{ path('app.admin.skills.index') }}">Compétences</a>
-								<a class="dropdown-item" href="{{ path('app.admin.requests') }}">Demandes</a>
+								<a class="dropdown-item" href="{{ path('app.admin.projects.index') }}">
+									<i class="bi bi-card-text"></i>
+									Projets</a>
+								<a class="dropdown-item" href="{{ path('app.admin.skills.index') }}">
+									<i class="bi bi-bookmarks-fill"></i>
+									Compétences</a>
+								<a class="dropdown-item" href="{{ path('app.admin.requests') }}">
+									<i class="bi bi-question-square-fill"></i>
+									Demandes</a>
 								<hr class="dropdown-divider">
 								{% if app.user %}
-									<a class="dropdown-item" href="/logout">Déconnexion</a>
+									<a class="dropdown-item" href="/logout">
+										<i class="bi bi-door-closed-fill"></i>
+										Déconnexion</a>
 								{% endif %}
 							</div>
 						</div>
