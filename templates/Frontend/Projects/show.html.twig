@@ -38,6 +38,12 @@
 								</div>
 							</div>
 						{% endif %}
+						{% if project.files|length > 0 %}
+							<h2>{{ project.files|length > 1 ? 'Pièces jointes :' : 'Pièce jointe' }}</h2>
+							{% for file in project.files %}
+								<a class="link-primary" href=" {{ vich_uploader_asset(file) }}">{{ file.fileName }}</a>
+							{% endfor %}
+						{% endif %}
 					</div>
 				</div>
 			</aside>
