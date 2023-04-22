@@ -10,7 +10,7 @@
 					<a href="{{ path('app.requests') }}" class="nav-link {{ app.request.get('_route') == 'app.requests' ? 'active' }}">Demandes</a>
 				</li>
 				<li class="navbar-item">
-					<a href="" class="nav-link {{ app.request.get('_route') == 'app.profil' ? 'active' }}">Profil</a>
+					<a href="{{ path('app.profil.index' )}}" class="nav-link {{ app.request.get('_route') == 'app.profil' ? 'active' }}">Profil</a>
 				</li>
 			</ul>
 		</div>
