@@ -59,3 +59,48 @@
         border-radius: 0.5rem;
     }
 }
+
+.content-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    .sidebar {
+        flex: 0 0 30%;
+        display: block;
+        position: sticky;
+        top: 4.5rem;
+        height: auto;
+        overflow-y: scroll;
+        box-shadow: 4px 1px 11px 3px $secondary;
+        border-radius: $border-radius;
+        margin-left: 1em;
+        padding-left: 1em;
+
+        .sidebar-content {
+            .project-tag {
+                .list-tag {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 1em 0.5em;
+
+                    margin-top: 1em;
+
+                    .tag {
+                        background: $secondary;
+                        padding: 5px 10px;
+                        border-radius: $border-radius;
+                        color: $white;
+                        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+                    }
+                }
+            }
+        }
+    }
+
+    .project-content {
+        flex: 0 0 65%;
+    }
+}

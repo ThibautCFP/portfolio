@@ -19,6 +19,31 @@
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>
+		<div class="content-block mt-4">
+			<aside class="sidebar">
+				<div class="sidebar-content">
+					<div class="project-information">
+						{% if project.skills|length > 0 %}
+							<div class="project-tag">
+								<h2>Compétences:</h2>
+								<div class="list-tag">
+									{% for skill in project.skills %}
+										<p class="tag">
+											<i class="bi bi-tags-fill"></i>
+											{{ skill.title}}
+										</p>
+									{% endfor %}
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</aside>
+			<div class="project-content">
+				{{ project.content|raw }}
+			</div>
+
+		</div>
 
 	</section>
 {% endblock %}
