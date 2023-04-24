@@ -7,17 +7,50 @@
 
 {% block body %}
 	<section>
-		<div class="swiper banner-hero">
-			<div class="swiper-wrapper">
-				{% for image in images %}
-					<div class="swiper-slide">
-						<img class="banner-hero" src="{{ vich_uploader_asset(image) }}" alt="">
-					</div>
-				{% endfor %}
+		{% if project.images|length > 0 %}
+			<div class="swiper banner-hero">
+				<div class="swiper-wrapper">
+					{% for image in project.images %}
+						<div class="swiper-slide">
+							<img class="banner-hero" src="{{ vich_uploader_asset(image) }}" alt="">
+						</div>
+					{% endfor %}
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
 			</div>
-			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+		{% endif %}
+
+		<div class="content-block mt-4">
+			<aside class="sidebar">
+				<div class="sidebar-content">
+					<div class="project-information">
+						{% if project.skills|length > 0 %}
+							<div class="project-tag">
+								<h2>{{ project.skills|length > 1 ? 'Compétences :' : 'Compétence :' }}</h2>
+								<div class="list-tag">
+									{% for skill in project.skills %}
+										<p class="tag">
+											<i class="bi bi-tags-fill"></i>
+											{{ skill.title}}
+										</p>
+									{% endfor %}
+								</div>
+							</div>
+						{% endif %}
+						{% if project.files|length > 0 %}
+							<h2>{{ project.files|length > 1 ? 'Pièces jointes :' : 'Pièce jointe' }}</h2>
+							{% for file in project.files %}
+								<a class="link-primary" href=" {{ vich_uploader_asset(file) }}">{{ file.fileName }}</a>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</aside>
+			<div class="project-content">
+				{{ project.content|raw }}
+			</div>
+
 		</div>
 
 	</section>

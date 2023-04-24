@@ -13,4 +13,10 @@ class FrontendController extends AbstractController
     {
         return $this->render('Frontend/index.html.twig');
     }
+
+    #[Route('/profil', name: 'app.profil.index', methods: ['GET'])]
+    public function profil(): Response
+    {
+        return $this->render('Frontend/Profil/index.html.twig');
+    }
 }

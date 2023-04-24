@@ -29,8 +29,6 @@ class ProjectController extends AbstractController
     {
         return $this->render('Frontend/Projects/show.html.twig', [
             'project' => $project,
-            'images' => $project->getImages(),
-            'skills' => $project->getSkills(),
         ]);
     }
 }

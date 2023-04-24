@@ -61,6 +61,15 @@ class ProjectType extends AbstractType
                 'prototype' => true,
                 'by_reference' => false,
                 'label' => false,
+            ])
+            ->add('files', CollectionType::class, [
+                'entry_type' => ProjectFileType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'delete_empty' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'label' => false,
             ]);
     }
 

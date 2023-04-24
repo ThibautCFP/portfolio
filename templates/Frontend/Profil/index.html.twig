@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Profil
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+
+		<div class="row d-flex justify-content-center">
+
+			<div class="col-md-7">
+				<div class="profil">
+					<div class="card p-3 py-4">
+
+						<div class="text-center">
+							<img src="build/images/thibaut.jpeg" width="100" class="rounded-circle">
+						</div>
+
+						<div class="text-center mt-3">
+							<span class="bg-secondary p-1 px-4 rounded text-white">Alternant</span>
+							<h5 class="mt-2 mb-0">Thibaut Brunet</h5>
+							<span>Développeur Full Stack junior</span>
+
+							<div class="px-4 mt-1">
+								<p class="fonts">Bonjour, j'ai 18 ans et je suis passionné par l'informatique. Actuellement en alternance pour un BTS SIO (Services Informations aux Organisations) option Développment Web. Malgré mon choix d'option, je suis aussi pationné par le réseau. Etude envisagé : Bachelor Réseaux et Sybersécurité</p>
+
+							</div>
+
+							<div class="buttons">
+								<a href="{{ path('app.requests.create') }}" class="btn btn-primary px-4 ms-3">Me contacter</a>
+								<a href="files/cv.pdf" class="btn btn-primary">Mon CV</a>
+							</div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

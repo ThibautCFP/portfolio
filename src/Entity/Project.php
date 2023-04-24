@@ -51,10 +51,14 @@ class Project
     #[ORM\ManyToMany(targetEntity: Skill::class, mappedBy: 'projects')]
     private Collection $skills;
 
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectFile::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $files;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->skills = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,6 +179,36 @@ class Project
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProjectFile>
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(ProjectFile $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files->add($file);
+            $file->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(ProjectFile $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getProject() === $this) {
+                $file->setProject(null);
+            }
+        }
 
         return $this;
     }

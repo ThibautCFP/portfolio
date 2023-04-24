@@ -48,6 +48,18 @@ class ProjectRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    // public function findById(int $id): array
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->select('p', 's', 'i')
+    //         ->join('p.skills', 's')
+    //         ->join('p.images', 'i')
+    //         ->where('p.id = :id')
+    //         ->setParameter('id', $id)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
     //    /**
     //     * @return Project[] Returns an array of Project objects
     //     */
