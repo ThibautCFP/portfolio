@@ -24,7 +24,7 @@ class ProjectImageType extends AbstractType
                     'label' => 'Image',
                     'delete_label' => "Supprimer l'image"
                 ]
-            );;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
