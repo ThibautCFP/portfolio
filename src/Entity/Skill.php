@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
@@ -18,6 +20,13 @@ class Skill
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(
+        max: 100,
+        maxMessage: 'Le titre ne peut pas dépasser 100 caractères'
+    )]
+    #[Assert\NotBlank(
+        message: 'Le titre ne peut pas être vide'
+    )]
     private ?string $title = null;
 
     #[ORM\Column(length: 100)]
