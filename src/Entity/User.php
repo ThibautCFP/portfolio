@@ -63,6 +63,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le mot de passe ne peut pas dépasser 255 caractères',
+    )]
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Messages::class, orphanRemoval: true)]
