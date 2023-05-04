@@ -38,26 +38,31 @@ class RequestController extends AbstractController
     #[Route('/create', name: 'app.requests.create', methods: ['POST', 'GET'])]
     public function create(Req $req): Response|RedirectResponse
     {
-        $request = new Request();
-        $form = $this->createForm(RequestType::class, $request);
+        if ($this->getUser()) {
+            $request = new Request();
+            $form = $this->createForm(RequestType::class, $request);
 
-        $form->handleRequest($req);
+            $form->handleRequest($req);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $request->setAuthor($this->getUser());
+                $request->getMessages()[0]->setAuthor($this->getUser());
+                $request->getMessages()[0]->setSupport(false);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $request->setAuthor($this->getUser());
-            $request->getMessages()[0]->setAuthor($this->getUser());
-            $request->getMessages()[0]->setSupport(false);
+                $this->requestRepository->save($request, true);
 
-            $this->requestRepository->save($request, true);
+                $this->addFlash('success', 'La demande a bien été enregistrée');
 
-            $this->addFlash('success', 'La demande a bien été enregistrée');
+                return $this->redirectToRoute('app.requests');
+            }
+
+            return $this->render('Frontend/Requests/create.html.twig', [
+                'form' => $form
+            ]);
+        } else {
+            $this->addFlash('error', 'Vous devez être connecter pour envoyer une demande');
 
             return $this->redirectToRoute('app.requests');
         }
-
-        return $this->render('Frontend/Requests/create.html.twig', [
-            'form' => $form
-        ]);
     }
 
     #[Route('/show/{id}', name: 'app.requests.show', methods: ['GET', 'POST'])]
